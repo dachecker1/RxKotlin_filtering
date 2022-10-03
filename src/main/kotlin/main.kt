@@ -92,4 +92,16 @@ fun main(args: Array<String>) {
 
         subject.onNext(episodeIV.title)
     }
+
+    exampleOf("distinctUntilChanged"){
+        val subscriptions = CompositeDisposable()
+
+        subscriptions.add(
+            Observable.just(Droid.R2D2, Droid.C3PO, Droid.C3PO, Droid.R2D2)
+                .distinctUntilChanged()
+                .subscribe{
+                    println(it)
+                }
+        )
+    }
 }
